@@ -1,5 +1,8 @@
 package dev.xtoy.common.text;
 
+import dev.xtoy.common.text.serializer.XTextSerializer;
+import dev.xtoy.common.text.serializer.XTextSerializerFactory;
+import dev.xtoy.common.text.serializer.XTextTypeEnum;
 import org.junit.jupiter.api.Test;
 import tools.jackson.core.type.TypeReference;
 
@@ -11,8 +14,8 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class XJsonProcessorTest {
-    private final XJsonProcessor processor = XJsonProcessor.DEFAULT;
+class XJsonSerializerTest {
+    private final XTextSerializer processor = XTextSerializerFactory.getSerializer(XTextTypeEnum.JSON);
 
     private record Person(String name, Integer age, LocalDateTime createTime) {}
 
