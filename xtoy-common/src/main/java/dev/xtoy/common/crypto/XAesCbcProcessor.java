@@ -15,7 +15,7 @@ import java.security.SecureRandom;
  * AES-CBC 加解密处理器
  */
 @Slf4j
-public class XAesCbcProcessor {
+public final class XAesCbcProcessor {
     public static final XAesCbcProcessor DEFAULT = new XAesCbcProcessor(16);
 
     private static final String ALGORITHM_AES = "AES";

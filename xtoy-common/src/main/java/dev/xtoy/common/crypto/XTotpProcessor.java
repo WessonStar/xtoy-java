@@ -15,7 +15,7 @@ import java.security.SecureRandom;
  * TOTP (Time-based One-Time Password) 处理器
  */
 @Slf4j
-public class XTotpProcessor {
+public final class XTotpProcessor {
     public static final XTotpProcessor TOTP_SHA1 =
             new XTotpProcessor("HmacSHA1", "SHA1", 6, 30);
 

@@ -6,7 +6,7 @@ import java.util.Base64;
 /**
  * Base64 处理器
  */
-public class XBase64Processor {
+public final class XBase64Processor {
     public static final XBase64Processor INSTANCE = new XBase64Processor();
 
     /**

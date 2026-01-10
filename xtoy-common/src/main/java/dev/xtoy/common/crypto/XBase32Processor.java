@@ -7,7 +7,7 @@ import org.apache.commons.codec.binary.Base32;
  * Base32 处理器
  */
 @Slf4j
-public class XBase32Processor {
+public final class XBase32Processor {
     public static final XBase32Processor INSTANCE = new XBase32Processor();
 
     private final Base32 ENCODER = new Base32();

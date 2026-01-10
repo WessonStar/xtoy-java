@@ -10,7 +10,7 @@ import java.security.*;
  * SHA 签名处理器
  */
 @Slf4j
-public class XShaProcessor {
+public final class XShaProcessor {
     public static final XShaProcessor SHA256_RSA = new XShaProcessor("SHA256withRSA");
 
     private static final XUrlBase64Processor URL_BASE_64_PROCESSOR = XUrlBase64Processor.INSTANCE;

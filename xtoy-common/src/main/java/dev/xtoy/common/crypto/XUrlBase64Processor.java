@@ -9,7 +9,7 @@ import java.util.Base64;
  * Url Base64 处理器
  */
 @Slf4j
-public class XUrlBase64Processor {
+public final class XUrlBase64Processor {
     public static final XUrlBase64Processor INSTANCE = new XUrlBase64Processor();
 
     /**

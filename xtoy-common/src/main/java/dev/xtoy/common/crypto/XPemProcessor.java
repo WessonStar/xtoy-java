@@ -12,7 +12,7 @@ import java.security.spec.X509EncodedKeySpec;
  * PEM (Privacy-Enhanced Mail) 处理器
  */
 @Slf4j
-public class XPemProcessor {
+public final class XPemProcessor {
     public static final XPemProcessor INSTANCE = new XPemProcessor();
 
     private static final String ALGORITHM_RSA = "RSA";

@@ -9,7 +9,7 @@ import java.security.*;
  * RSA 处理器
  */
 @Slf4j
-public class XRsaProcessor {
+public final class XRsaProcessor {
     public static XRsaProcessor RSA_ECB_PKCS1 = new XRsaProcessor("RSA/ECB/PKCS1Padding");
 
     private static final String ALGORITHM_RSA = "RSA";
