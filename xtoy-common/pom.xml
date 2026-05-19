@@ -58,5 +58,6 @@
             <groupId>tools.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
+
     </dependencies>
 </project>
