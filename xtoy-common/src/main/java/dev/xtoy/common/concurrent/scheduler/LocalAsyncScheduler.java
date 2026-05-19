@@ -1,4 +1,4 @@
-package dev.xtoy.common.scheduler;
+package dev.xtoy.common.concurrent.scheduler;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,7 +9,7 @@ import java.util.stream.Stream;
  * 本地异步调度器
  */
 @Slf4j
-public class LocalAsyncScheduler implements AutoCloseable {
+public class LocalAsyncScheduler implements AsyncScheduler, AutoCloseable {
     private static final int DEFAULT_CORE_POOL_SIZE = 20;
     private static final int DEFAULT_MAX_POOL_SIZE = 40;
     private static final int DEFAULT_QUEUE_CAPACITY = 40;
@@ -28,45 +28,33 @@ public class LocalAsyncScheduler implements AutoCloseable {
         this.scheduledExecutor = Executors.newScheduledThreadPool(2);
     }
 
-    /**
-     * 异步执行任务；默认在提交失败时抛出异常，由调用方感知线程池耗尽。
-     */
+    @Override
     public CompletableFuture<Void> runAsync(Runnable runnable) {
         return runAsync(runnable, AsyncRejectStrategy.THROW);
     }
 
-    /**
-     * 异步执行任务，并由调用方指定提交失败时的处理策略。
-     */
+    @Override
     public CompletableFuture<Void> runAsync(Runnable runnable, AsyncRejectStrategy rejectStrategy) {
         return runAsync(runnable, defaultExecutor, rejectStrategy);
     }
 
-    /**
-     * 使用指定线程池异步执行任务；默认在提交失败时抛出异常。
-     */
+    @Override
     public CompletableFuture<Void> runAsync(Runnable runnable, ExecutorService executor) {
         return runAsync(runnable, executor, AsyncRejectStrategy.THROW);
     }
 
-    /**
-     * 使用指定线程池异步执行任务，并由调用方指定提交失败时的处理策略。
-     */
+    @Override
     public CompletableFuture<Void> runAsync(
             Runnable runnable, ExecutorService executor, AsyncRejectStrategy rejectStrategy) {
         return runAsyncSafely(MdcRunnable.wrap(runnable), executor, "runAsync", rejectStrategy);
     }
 
-    /**
-     * 异步延迟执行任务；默认在提交失败时抛出异常。
-     */
+    @Override
     public CompletableFuture<Void> delayRunAsync(Runnable runnable, long delay, TimeUnit timeUnit) {
         return delayRunAsync(runnable, delay, timeUnit, AsyncRejectStrategy.THROW);
     }
 
-    /**
-     * 异步延迟执行任务，并由调用方指定提交失败时的处理策略。
-     */
+    @Override
     public CompletableFuture<Void> delayRunAsync(
             Runnable runnable, long delay, TimeUnit timeUnit, AsyncRejectStrategy rejectStrategy) {
         CompletableFuture<Void> future = new CompletableFuture<>();

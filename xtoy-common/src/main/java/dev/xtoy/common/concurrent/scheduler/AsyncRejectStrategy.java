@@ -1,4 +1,4 @@
-package dev.xtoy.common.scheduler;
+package dev.xtoy.common.concurrent.scheduler;
 
 /**
  * 异步任务提交被拒绝时的处理策略。

@@ -1,4 +1,4 @@
-package dev.xtoy.common.scheduler;
+package dev.xtoy.common.concurrent.scheduler;
 
 import org.slf4j.MDC;
 
